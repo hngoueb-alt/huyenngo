@@ -30,22 +30,21 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
 
 :root {
-    --bg:      #0e0b1a;
-    --bg2:     #130f22;
-    --bg3:     #1a1530;
-    --border:  #2d2450;
-    --accent:  #c084fc;
-    --accent2: #f472b6;
-    --accent3: #38bdf8;
-    --txt:     #e2d9f3;
-    --txt2:    #9d8ec4;
-    --txt3:    #5b4f80;
+    --bg: #060d1c;
+    --bg2: #0b1528;
+    --bg3: #0f1e36;
+    --border: #1a2f50;
+    --accent: #f472b6;
+    --accent2: #a855f7;
+    --txt: #d8e4f0;
+    --txt2: #8ba0b8;
+    --txt3: #4a6178;
 }
 
-html, body, .stApp { background: var(--bg) !important; font-family: 'Inter', sans-serif; }
+html, body, .stApp { background: var(--bg) !important; font-family: 'Be Vietnam Pro', sans-serif; }
 
 /* Chữ toàn app */
 .stApp, .stApp p, .stApp span, .stApp li, .stApp label,
@@ -53,164 +52,135 @@ html, body, .stApp { background: var(--bg) !important; font-family: 'Inter', san
 [data-testid="stMarkdownContainer"] p, [data-testid="stText"] {
     color: var(--txt) !important;
 }
-.stApp h1 { color: #ffffff !important; font-size: 2rem !important; font-weight: 800 !important; letter-spacing: -0.03em; }
-.stApp h2 { color: #ede9fe !important; font-size: 1.45rem !important; font-weight: 700 !important; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
-.stApp h3 { color: #d8b4fe !important; font-size: 1.15rem !important; font-weight: 600 !important; }
-.stApp h4 { color: #c4b5fd !important; font-size: 1rem !important; font-weight: 600 !important; }
+.stApp h1 { color: #ffffff !important; font-size: 2rem !important; font-weight: 800 !important; }
+.stApp h2 { color: #e8f0fb !important; font-size: 1.45rem !important; font-weight: 700 !important; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+.stApp h3 { color: #c5d8ee !important; font-size: 1.15rem !important; font-weight: 600 !important; }
+.stApp h4 { color: #b0cce8 !important; font-size: 1rem !important; font-weight: 600 !important; }
 .stCaption, div[data-testid="stCaptionContainer"] p { color: var(--txt2) !important; font-size: 0.82rem !important; }
-.katex, .katex * { color: #f0abfc !important; }
+.katex, .katex * { color: #e2d9f3 !important; }
 [data-testid="stDataFrame"] * { color: var(--txt) !important; background: transparent !important; }
 
-/* KPI Cards — glass style */
+/* KPI Cards */
 .kpi-box {
-    background: linear-gradient(135deg, rgba(30,20,60,0.85) 0%, rgba(50,25,75,0.75) 100%);
-    border: 1px solid rgba(192,132,252,0.25);
-    border-radius: 16px;
+    background: linear-gradient(135deg, #0d1e35 0%, #0f2642 100%);
+    border: 1px solid var(--border);
+    border-radius: 14px;
     padding: 18px 20px;
     position: relative;
     overflow: hidden;
     height: 100%;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 24px rgba(192,132,252,0.08);
 }
 .kpi-box::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0;
     height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border-radius: 16px 16px 0 0;
+    border-radius: 14px 14px 0 0;
 }
-.kpi-box::after {
-    content: ''; position: absolute; bottom: -30px; right: -20px;
-    width: 80px; height: 80px;
-    background: radial-gradient(circle, rgba(192,132,252,0.12), transparent 70%);
-    border-radius: 50%;
-}
-.kpi-label { color: #9d8ec4 !important; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
-.kpi-value { color: var(--accent) !important; font-size: 1.75rem; font-weight: 800; font-family: 'Fira Code', monospace; line-height: 1.1; }
-.kpi-delta { display: inline-block; background: rgba(196,92,252,0.15); color: #d8b4fe !important; border-radius: 6px; padding: 2px 8px; font-size: 0.72rem; font-weight: 700; margin-top: 4px; border: 1px solid rgba(196,92,252,0.30); }
+.kpi-label { color: #7fa3c4 !important; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+.kpi-value { color: var(--accent) !important; font-size: 1.75rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; line-height: 1.1; }
+.kpi-delta { display: inline-block; background: rgba(244,114,182,0.12); color: var(--accent) !important; border-radius: 6px; padding: 2px 8px; font-size: 0.72rem; font-weight: 700; margin-top: 4px; border: 1px solid rgba(244,114,182,0.25); }
 
 /* Section header */
 .section-hdr {
-    background: linear-gradient(90deg, rgba(192,132,252,0.10), rgba(244,114,182,0.04), transparent);
+    background: linear-gradient(90deg, rgba(244,114,182,0.08), transparent);
     border-left: 4px solid var(--accent);
-    border-radius: 0 12px 12px 0;
-    padding: 14px 20px;
+    border-radius: 0 10px 10px 0;
+    padding: 12px 18px;
     margin-bottom: 20px;
-    box-shadow: inset 0 0 40px rgba(192,132,252,0.03);
 }
 .section-hdr h2 { border-bottom: none !important; margin: 0 !important; padding: 0 !important; }
 .section-sub { color: var(--txt2) !important; font-size: 0.85rem !important; margin-top: 4px; }
 
 /* Note boxes */
 .note {
-    background: rgba(56,189,248,0.06);
-    border-left: 4px solid var(--accent3);
+    background: rgba(168,85,247,0.07);
+    border-left: 4px solid var(--accent2);
     padding: 12px 16px;
-    border-radius: 0 12px 12px 0;
+    border-radius: 0 10px 10px 0;
     color: var(--txt) !important;
     font-size: 0.88rem;
     line-height: 1.65;
     margin: 12px 0;
 }
-.note b { color: #bae6fd !important; }
+.note b { color: #ffffff !important; }
 .note-green {
-    background: rgba(192,132,252,0.07);
+    background: rgba(244,114,182,0.07);
     border-left: 4px solid var(--accent);
     padding: 12px 16px;
-    border-radius: 0 12px 12px 0;
+    border-radius: 0 10px 10px 0;
     color: var(--txt) !important;
     font-size: 0.88rem;
     line-height: 1.65;
     margin: 12px 0;
 }
-.note-green b { color: #e9d5ff !important; }
+.note-green b { color: #ffffff !important; }
 
 /* Level chips */
 .chip { display: inline-block; padding: 3px 11px; border-radius: 999px; font-size: 0.78rem; font-weight: 700; margin-right: 8px; }
 
 /* Formula block */
 .formula-block {
-    background: rgba(192,132,252,0.06);
-    border: 1px solid rgba(192,132,252,0.20);
-    border-radius: 12px;
+    background: rgba(168,85,247,0.06);
+    border: 1px solid rgba(168,85,247,0.2);
+    border-radius: 10px;
     padding: 14px 18px;
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.82rem;
-    color: #e9d5ff !important;
+    color: #c4b5fd !important;
     line-height: 1.8;
     margin: 12px 0 18px;
 }
 
 /* Sidebar */
-[data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #0c0918 0%, #100d20 100%) !important;
-    border-right: 1px solid var(--border);
-}
+[data-testid="stSidebar"] { background: #080e1d !important; border-right: 1px solid var(--border); }
 [data-testid="stSidebar"] * { color: var(--txt) !important; }
 [data-testid="stSidebar"] .stRadio label { font-size: 0.87rem !important; padding: 4px 0 !important; }
 .sidebar-card {
-    background: linear-gradient(135deg, rgba(30,20,55,0.9), rgba(45,20,70,0.8));
-    border: 1px solid rgba(192,132,252,0.25);
-    border-radius: 14px;
-    padding: 16px;
-    font-size: 0.83rem;
-    line-height: 1.75;
+    background: #0d1929;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 0.82rem;
+    line-height: 1.7;
     color: var(--txt) !important;
-    box-shadow: 0 2px 16px rgba(192,132,252,0.08);
 }
-.sidebar-card b { color: #e9d5ff !important; }
+.sidebar-card b { color: #ffffff !important; }
 
 /* Tabs */
-.stTabs [data-baseweb="tab-list"] { gap: 4px; background: transparent; }
-.stTabs [data-baseweb="tab"] {
-    background: rgba(19,15,34,0.9);
-    border-radius: 10px 10px 0 0;
-    padding: 8px 16px;
-    border: 1px solid var(--border);
-    border-bottom: none;
-}
-.stTabs [data-baseweb="tab"] p { color: var(--txt2) !important; font-weight: 600; font-size: 0.85rem; }
-.stTabs [aria-selected="true"] { background: rgba(30,20,55,0.95) !important; border-color: var(--accent) !important; }
+.stTabs [data-baseweb="tab-list"] { gap: 3px; background: transparent; }
+.stTabs [data-baseweb="tab"] { background: #0c1929; border-radius: 8px 8px 0 0; padding: 8px 16px; border: 1px solid var(--border); border-bottom: none; }
+.stTabs [data-baseweb="tab"] p { color: #7fa3c4 !important; font-weight: 600; font-size: 0.85rem; }
+.stTabs [aria-selected="true"] { background: #0f2645 !important; border-color: var(--accent) !important; }
 .stTabs [aria-selected="true"] p { color: var(--accent) !important; }
-.stTabs [data-baseweb="tab-panel"] {
-    background: rgba(13,10,26,0.95);
-    border: 1px solid var(--border);
-    border-radius: 0 12px 12px 12px;
-    padding: 20px;
-}
+.stTabs [data-baseweb="tab-panel"] { background: #080e1d; border: 1px solid var(--border); border-radius: 0 10px 10px 10px; padding: 20px; }
 
 /* Sliders & inputs */
 .stSlider label, .stRadio label, .stSelectbox label { color: var(--txt) !important; font-size: 0.88rem !important; }
 .stSlider [data-baseweb="slider"] [role="slider"] { background: var(--accent) !important; }
 
 /* Expander */
-.stExpander { border: 1px solid var(--border) !important; border-radius: 12px !important; background: var(--bg2) !important; }
+.stExpander { border: 1px solid var(--border) !important; border-radius: 10px !important; background: var(--bg2) !important; }
 .stExpander summary { color: var(--txt) !important; }
 
 /* Metric */
-[data-testid="stMetric"] {
-    background: linear-gradient(135deg, var(--bg3), rgba(45,25,70,0.6));
-    border: 1px solid rgba(192,132,252,0.2);
-    border-radius: 12px;
-    padding: 12px;
-}
+[data-testid="stMetric"] { background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
 [data-testid="stMetricLabel"] { color: var(--txt2) !important; font-size: 0.8rem !important; }
-[data-testid="stMetricValue"] { color: var(--accent) !important; font-family: 'Fira Code', monospace !important; }
+[data-testid="stMetricValue"] { color: var(--accent) !important; font-family: 'JetBrains Mono', monospace !important; }
 
 /* Divider */
 hr { border-color: var(--border) !important; margin: 20px 0 !important; }
 
 /* Success / Error */
-.stSuccess { background: rgba(192,132,252,0.10) !important; border: 1px solid rgba(192,132,252,0.30) !important; border-radius: 8px !important; color: #e9d5ff !important; }
-.stError { background: rgba(244,114,182,0.10) !important; border: 1px solid rgba(244,114,182,0.30) !important; border-radius: 8px !important; }
-.stWarning { background: rgba(251,191,36,0.10) !important; border: 1px solid rgba(251,191,36,0.30) !important; border-radius: 8px !important; }
+.stSuccess { background: rgba(244,114,182,0.1) !important; border: 1px solid rgba(244,114,182,0.3) !important; border-radius: 8px !important; color: #fce7f3 !important; }
+.stError { background: rgba(239,68,68,0.1) !important; border: 1px solid rgba(239,68,68,0.3) !important; border-radius: 8px !important; }
+.stWarning { background: rgba(251,191,36,0.1) !important; border: 1px solid rgba(251,191,36,0.3) !important; border-radius: 8px !important; }
 </style>
 """, unsafe_allow_html=True)
 
 PLOT_TMPL = "plotly_dark"
-PALETTE = ["#c084fc","#f472b6","#38bdf8","#fb923c","#a78bfa","#34d399","#fbbf24","#e879f9","#94a3b8","#f87171"]
+PALETTE = ["#f472b6","#a855f7","#f87171","#fbbf24","#38bdf8","#fb923c","#34d399","#e879f9","#94a3b8","#a3e635"]
 P_CLRS = dict(zip(
     ['s1 Lạc quan','s2 Cơ sở','s3 Bi quan','s4 Khủng hoảng'],
-    ['#a78bfa','#38bdf8','#fb923c','#f87171']
+    ['#4ade80','#60a5fa','#fb923c','#f87171']
 ))
 
 def plotly_cfg(fig, h=380, title=None, xtitle=None, ytitle=None):
@@ -221,12 +191,12 @@ def plotly_cfg(fig, h=380, title=None, xtitle=None, ytitle=None):
         xaxis_title=xtitle,
         yaxis_title=ytitle,
         paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(14,11,26,0.7)',
-        font=dict(family='Inter, sans-serif', size=12, color='#e2d9f3'),
-        title_font=dict(size=14, color='#ede9fe', family='Inter'),
-        legend=dict(bgcolor='rgba(0,0,0,0)', bordercolor='#2d2450', borderwidth=1),
-        xaxis=dict(gridcolor='#2d2450', linecolor='#2d2450'),
-        yaxis=dict(gridcolor='#2d2450', linecolor='#2d2450'),
+        plot_bgcolor='rgba(11,21,40,0.6)',
+        font=dict(family='Be Vietnam Pro, sans-serif', size=12, color='#d8e4f0'),
+        title_font=dict(size=14, color='#e8f0fb', family='Be Vietnam Pro'),
+        legend=dict(bgcolor='rgba(0,0,0,0)', bordercolor='#1a2f50', borderwidth=1),
+        xaxis=dict(gridcolor='#1a2f50', linecolor='#1a2f50'),
+        yaxis=dict(gridcolor='#1a2f50', linecolor='#1a2f50'),
         margin=dict(t=50 if title else 20, b=40, l=40, r=20),
     )
     return fig
@@ -349,7 +319,7 @@ PAGES = [
 ]
 
 with st.sidebar:
-    st.markdown("## 💜 AIDEOM-VN")
+    st.markdown("## 🇻🇳 AIDEOM-VN")
     page = st.radio("Mục lục", PAGES, label_visibility="collapsed")
     st.markdown("---")
     st.markdown(
@@ -366,7 +336,7 @@ with st.sidebar:
 # TIỆN ÍCH
 # ============================================================
 def kpi(col, label, value, delta=None, color=None):
-    clr = color or "#c084fc"
+    clr = color or "#f472b6"
     d_html = f'<div class="kpi-delta">↑ {delta}</div>' if delta else ''
     html = (f'<div class="kpi-box">'
             f'<div class="kpi-label">{label}</div>'
@@ -465,7 +435,7 @@ def page_home():
         st.dataframe(MACRO, use_container_width=True, hide_index=True)
         fig = px.line(MACRO, x="year", y="GDP_trillion_VND", markers=True,
                       template=PLOT_TMPL, labels={"GDP_trillion_VND":"GDP (nghìn tỷ VND)","year":"Năm"})
-        fig.update_traces(line_color="#c084fc", line_width=2.5, marker_size=8)
+        fig.update_traces(line_color="#f472b6", line_width=2.5, marker_size=8)
         st.plotly_chart(plotly_cfg(fig, title="GDP Việt Nam (nghìn tỷ VND) 2020-2025"), use_container_width=True)
     with t2:
         df_s = SECTORS.copy()
@@ -498,7 +468,7 @@ def page_bai1():
     kpi(c1,"MAPE dự báo", f"{mape:.2f}%")
     kpi(c2,"TFP trung bình Ā", f"{A_mean:.4f}")
     kpi(c3,"TFP 2025", f"{A[-1]:.4f}")
-    kpi(c4,"Tăng TFP 20-25", f"{((A[-1]/A[0])**(1/5)-1)*100:.2f}%/năm", color="#6366f1")
+    kpi(c4,"Tăng TFP 20-25", f"{((A[-1]/A[0])**(1/5)-1)*100:.2f}%/năm", color="#a855f7")
     st.markdown("<br>",unsafe_allow_html=True)
 
     tab1,tab2,tab3,tab4 = st.tabs(["📌 1.4.1 TFP A_t","📊 1.4.2 Dự báo & MAPE","📉 1.4.3 Phân rã tăng trưởng","🔭 1.4.4 Dự báo 2030"])
@@ -510,9 +480,9 @@ def page_bai1():
         with c2:
             fig = go.Figure()
             fig.add_scatter(x=years,y=A,mode="lines+markers",name="TFP A_t",
-                           line=dict(color="#c084fc",width=2.5),marker=dict(size=8,color="#c084fc"))
-            fig.add_hline(y=A_mean,line_dash="dash",line_color="#f472b6",
-                         annotation_text=f"Ā={A_mean:.4f}",annotation_font_color="#f472b6")
+                           line=dict(color="#a78bfa",width=2.5),marker=dict(size=8,color="#a78bfa"))
+            fig.add_hline(y=A_mean,line_dash="dash",line_color="#fbbf24",
+                         annotation_text=f"Ā={A_mean:.4f}",annotation_font_color="#fbbf24")
             st.plotly_chart(plotly_cfg(fig,title="Năng suất nhân tố tổng hợp A_t 2020-2025",
                                        xtitle="Năm",ytitle="TFP (A)"), use_container_width=True)
         note("<b>Xu hướng TFP:</b> TFP tăng liên tục từ 2020→2025 (27.75→34.91), phản ánh chất lượng tăng trưởng cải thiện. Giai đoạn 2021-2022 (COVID) tăng chậm hơn nhưng không giảm — cho thấy số hóa đã hỗ trợ tốt khả năng phục hồi.")
@@ -525,7 +495,7 @@ def page_bai1():
         c1.markdown(f"**MAPE = {mape:.3f}%** — sai số trung bình tuyệt đối phần trăm")
         with c2:
             fig = go.Figure()
-            fig.add_bar(x=years,y=Y,name="Y thực tế",marker_color="rgba(192,132,252,0.6)")
+            fig.add_bar(x=years,y=Y,name="Y thực tế",marker_color="rgba(0,201,167,0.6)")
             fig.add_scatter(x=years,y=Y_hat,name="Y dự báo",mode="lines+markers",
                           line=dict(color="#f87171",width=2.5,dash="dot"),marker=dict(size=8))
             st.plotly_chart(plotly_cfg(fig,title=f"Y thực tế vs Y dự báo — MAPE={mape:.2f}%",
@@ -565,11 +535,11 @@ def page_bai1():
         cc=st.columns(3)
         kpi(cc[0],"GDP 2030 dự báo",f"{Y30:,.0f} ng.tỷ")
         kpi(cc[1],"Tăng trưởng BQ 25-30",f"{((Y30/Y[-1])**(1/5)-1)*100:.2f}%/năm",color="#fbbf24")
-        kpi(cc[2],"GDP/người 2030 (~110tr dân)",f"{Y30*1e12/(110e6)/25000:,.0f} USD",color="#6366f1")
+        kpi(cc[2],"GDP/người 2030 (~110tr dân)",f"{Y30*1e12/(110e6)/25000:,.0f} USD",color="#a855f7")
         proj=[Y[-1]]+[Y[-1]*(Y30/Y[-1])**((t+1)/5) for t in range(5)]
         fig=go.Figure()
         fig.add_scatter(x=list(range(2025,2031)),y=proj,mode="lines+markers",name="GDP dự báo",
-                       line=dict(color="#c084fc",width=2.5),marker=dict(size=8))
+                       line=dict(color="#f472b6",width=2.5),marker=dict(size=8))
         fig.add_vline(x=2025,line_dash="dash",line_color="#4b6070",
                      annotation_text="Thực tế",annotation_font_color="#4b6070")
         st.plotly_chart(plotly_cfg(fig,title=f"Quỹ đạo GDP 2025→2030 (kịch bản: D=30%, AI=100K DN, H=35%)",
@@ -604,7 +574,7 @@ def page_bai2():
         c1,c2,c3=st.columns(3)
         kpi(c1,"Z* GDP tăng thêm",f"{-res.fun:.2f} ng.tỷ")
         kpi(c2,"Shadow price ngân sách",f"{shadow:.2f}","ng.tỷ GDP / ng.tỷ NS")
-        kpi(c3,"Tỷ trọng AI+R&D",f"{(res.x[1]+res.x[3])/res.x.sum()*100:.1f}%",color="#6366f1")
+        kpi(c3,"Tỷ trọng AI+R&D",f"{(res.x[1]+res.x[3])/res.x.sum()*100:.1f}%",color="#a855f7")
         st.markdown("<br>",unsafe_allow_html=True)
         c1,c2=st.columns([1.2,1])
         c1.dataframe(df,use_container_width=True,hide_index=True)
@@ -626,7 +596,7 @@ def page_bai2():
         with c2:
             fig=go.Figure()
             fig.add_scatter(x=Bs,y=Zs,mode="lines+markers",name="Z*(B)",
-                          line=dict(color="#c084fc",width=2.5),marker=dict(size=7))
+                          line=dict(color="#f472b6",width=2.5),marker=dict(size=7))
             fig.add_vline(x=100,line_dash="dash",line_color="#4b6070",
                          annotation_text="Cơ sở B=100",annotation_font_color="#4b6070")
             st.plotly_chart(plotly_cfg(fig,title="Đường cong Z*(B) — GDP gain theo ngân sách",
@@ -754,7 +724,7 @@ def page_bai3():
                     hide_index=True,use_container_width=True)
         fig=go.Figure()
         fig.add_bar(y=comp["Ngành"],x=comp["P. Tăng trưởng"],name="Tăng trưởng",
-                   orientation="h",marker_color="#c084fc",opacity=0.85)
+                   orientation="h",marker_color="#f472b6",opacity=0.85)
         fig.add_bar(y=comp["Ngành"],x=comp["P. Bao trùm"],name="Bao trùm",
                    orientation="h",marker_color="#f87171",opacity=0.85)
         fig.update_layout(barmode="group")
@@ -842,7 +812,7 @@ def page_bai4():
 
     with tab2:
         fig=go.Figure()
-        fig.add_bar(x=comp["Vùng"],y=comp["Có công bằng"],name="Có công bằng (C5)",marker_color="#c084fc",opacity=0.85)
+        fig.add_bar(x=comp["Vùng"],y=comp["Có công bằng"],name="Có công bằng (C5)",marker_color="#f472b6",opacity=0.85)
         fig.add_bar(x=comp["Vùng"],y=comp["Không công bằng"],name="Không có C5",marker_color="#f87171",opacity=0.75)
         fig.update_layout(barmode="group")
         st.plotly_chart(plotly_cfg(fig,title="Tổng ngân sách theo vùng: có vs không có ràng buộc công bằng C5",
@@ -896,7 +866,7 @@ def page_bai5():
         kpi(c1,"Số dự án chọn",f"{len(sel)}/15")
         kpi(c2,"Tổng chi phí",f"{tc:,} tỷ")
         kpi(c3,"Tổng lợi ích Z*",f"{Z:,.0f} tỷ")
-        kpi(c4,"NPV biên (B/C)",f"{Z/tc:.2f}x",color="#6366f1")
+        kpi(c4,"NPV biên (B/C)",f"{Z/tc:.2f}x",color="#a855f7")
         st.markdown("<br>",unsafe_allow_html=True)
         df_sel=pd.DataFrame([{"Mã":f"P{i}","Tên dự án":names[i],"Chi phí (tỷ)":C[i],
                               "NPV (tỷ)":B[i],"Năm 1-2":C1[i],"B/C":round(B[i]/C[i],2)} for i in sel])
@@ -957,7 +927,7 @@ def page_bai6():
     rank_exp=np.argsort(-C_exp)
     c1,c2,c3=st.columns(3)
     kpi(c1,f"#1 — {rn_vi[rank_exp[0]]}",f"C* = {C_exp[rank_exp[0]]:.4f}")
-    kpi(c2,f"#2 — {rn_vi[rank_exp[1]]}",f"C* = {C_exp[rank_exp[1]]:.4f}",color="#6366f1")
+    kpi(c2,f"#2 — {rn_vi[rank_exp[1]]}",f"C* = {C_exp[rank_exp[1]]:.4f}",color="#a855f7")
     kpi(c3,f"#3 — {rn_vi[rank_exp[2]]}",f"C* = {C_exp[rank_exp[2]]:.4f}",color="#fbbf24")
     st.markdown("<br>",unsafe_allow_html=True)
 
@@ -988,7 +958,7 @@ def page_bai6():
         st.dataframe(comp,use_container_width=True,hide_index=True)
         fig=go.Figure()
         fig.add_bar(y=rn_vi,x=C_exp,name="Expert (w₄_AI=0.20)",orientation="h",
-                   marker_color="#c084fc",opacity=0.85)
+                   marker_color="#f472b6",opacity=0.85)
         fig.add_bar(y=rn_vi,x=C_ent,name="Entropy (khách quan)",orientation="h",
                    marker_color="#f87171",opacity=0.75)
         fig.update_layout(barmode="group")
@@ -1202,13 +1172,13 @@ def page_bai8():
     c1,c2,c3=st.columns(3)
     kpi(c1,"Phúc lợi W* (CRRA)",f"{W:.3f}")
     kpi(c2,"GDP 2035 dự báo",f"{Y[-1]:,.0f} ng.tỷ")
-    kpi(c3,"Tăng trưởng bình quân",f"{((Y[-1]/Y[0])**(1/10)-1)*100:.2f}%/năm",color="#6366f1")
+    kpi(c3,"Tăng trưởng bình quân",f"{((Y[-1]/Y[0])**(1/10)-1)*100:.2f}%/năm",color="#a855f7")
     st.markdown("<br>",unsafe_allow_html=True)
 
     tab1,tab3,tab4=st.tabs(["📈 8.3.1-2 Quỹ đạo tối ưu","⚡ 8.3.3 Cú sốc TFP 2028","🆚 8.3.4 So sánh chiến lược"])
     with tab1:
         fig=make_subplots(rows=2,cols=3,subplot_titles=("K — Vốn vật chất (ng.tỷ)","D — Hạ tầng số (%)","AI — Năng lực AI (K DN)","H — Nhân lực số (%)","Y (GDP) & C (tiêu dùng)","A — TFP"))
-        for s,r,c,col,nm in [(K,1,1,"#38bdf8","K"),(D,1,2,"#c084fc","D"),(AI,1,3,"#a78bfa","AI"),(H,2,1,"#fb923c","H"),(A,2,3,"#4ade80","A")]:
+        for s,r,c,col,nm in [(K,1,1,"#38bdf8","K"),(D,1,2,"#f472b6","D"),(AI,1,3,"#a78bfa","AI"),(H,2,1,"#fb923c","H"),(A,2,3,"#4ade80","A")]:
             fig.add_trace(go.Scatter(x=years,y=s,mode="lines+markers",name=nm,line_color=col,showlegend=True,marker_size=5),row=r,col=c)
         fig.add_trace(go.Scatter(x=years,y=Y,name="Y GDP",line_color="#f1f5f9",marker_size=4),row=2,col=2)
         fig.add_trace(go.Scatter(x=years[:10],y=C,name="C tiêu dùng",line_color="#22d3ee",marker_size=4),row=2,col=2)
@@ -1221,7 +1191,7 @@ def page_bai8():
         cc=st.columns(3)
         kpi(cc[0],"W không sốc",f"{sh['W_base']:.3f}")
         kpi(cc[1],"W giữ kế hoạch",f"{sh['W_plan']:.3f}",color="#fbbf24")
-        kpi(cc[2],"W tái tối ưu",f"{sh['W_reopt']:.3f}",color="#c084fc")
+        kpi(cc[2],"W tái tối ưu",f"{sh['W_reopt']:.3f}",color="#f472b6")
         fig=go.Figure()
         fig.add_scatter(x=years,y=sh["Y_base"],name="Không sốc",line=dict(color="#4ade80",width=2.5))
         fig.add_scatter(x=years,y=sh["Y_shock"],name="Có sốc — giữ KH",line=dict(color="#f87171",width=2.5))
@@ -1239,7 +1209,7 @@ def page_bai8():
         c1.dataframe(df_s,use_container_width=True,hide_index=True)
         with c2:
             fig=go.Figure()
-            fig.add_scatter(x=years,y=s["Y_opt"],name="Tối ưu",line=dict(color="#c084fc",width=2.5))
+            fig.add_scatter(x=years,y=s["Y_opt"],name="Tối ưu",line=dict(color="#f472b6",width=2.5))
             fig.add_scatter(x=years,y=s["Y_even"],name="Đầu tư đều",line=dict(color="#38bdf8",width=2))
             fig.add_scatter(x=years,y=s["Y_front"],name="Front-load",line=dict(color="#fb923c",width=2,dash="dot"))
             st.plotly_chart(plotly_cfg(fig,title="GDP theo chiến lược đầu tư",xtitle="Năm",ytitle="GDP"), use_container_width=True)
@@ -1423,8 +1393,8 @@ def page_bai10():
     c = st.columns(4)
     kpi(c[0], "Z* Stochastic SP", f"{Z_sp:,.0f}")
     kpi(c[1], "Z* EV solution", f"{Z_ev:,.0f}", color="#fbbf24")
-    kpi(c[2], "VSS = Z*_SP − Z*_EV", f"{VSS:,.0f}", color="#c084fc")
-    kpi(c[3], "EVPI = Z*_WS − Z*_SP", f"{EVPI:,.0f}", color="#6366f1")
+    kpi(c[2], "VSS = Z*_SP − Z*_EV", f"{VSS:,.0f}", color="#f472b6")
+    kpi(c[3], "EVPI = Z*_WS − Z*_SP", f"{EVPI:,.0f}", color="#a855f7")
     st.markdown("<br>", unsafe_allow_html=True)
 
     tab1, tab2, tabr = st.tabs(["📌 10.5.1 First & Second stage", "📊 10.5.2-3 Kịch bản · VSS · EVPI", "🛡️ 10.5.4 Robust minimax regret"])
@@ -1445,7 +1415,7 @@ def page_bai10():
         c1.dataframe(scn, use_container_width=True, hide_index=True)
         with c2:
             fig = px.bar(scn, x="Kịch bản", y="Z*[s] (tỷ)", template=PLOT_TMPL, color="Kịch bản")
-            fig.add_hline(y=Z_sp, line_dash="dash", line_color="#c084fc", annotation_text=f"Z*_SP={Z_sp:,.0f}")
+            fig.add_hline(y=Z_sp, line_dash="dash", line_color="#f472b6", annotation_text=f"Z*_SP={Z_sp:,.0f}")
             st.plotly_chart(fig, use_container_width=True)
         note(f"<b>VSS = {VSS:,.0f}:</b> giá trị của tư duy xác suất. <b>EVPI = {EVPI:,.0f}:</b> giá trị thông tin hoàn hảo.", green=True)
 
@@ -1539,12 +1509,12 @@ def page_bai11():
         kpi(c[0],"Learning rate α","0.10")
         kpi(c[1],"Discount γ","0.95")
         kpi(c[2],"Episodes","8.000")
-        kpi(c[3],"ε: 1.0 → 0.05","greedy",color="#6366f1")
+        kpi(c[3],"ε: 1.0 → 0.05","greedy",color="#a855f7")
         st.latex(r"Q(s,a) \leftarrow Q(s,a) + \alpha\left[r + \gamma \max_{a'} Q(s',a') - Q(s,a)\right]")
         w=200; sm=np.convolve(hist,np.ones(w)/w,mode="valid")
         fig=go.Figure()
         fig.add_scatter(x=list(range(len(sm))),y=sm,mode="lines",name="Phần thưởng (TB200 ep)",
-                       line=dict(color="#c084fc",width=2))
+                       line=dict(color="#f472b6",width=2))
         st.plotly_chart(plotly_cfg(fig,title="Hội tụ Q-learning — phần thưởng TB trượt 200 episodes",
                                   xtitle="Episode",ytitle="Tổng phần thưởng"), use_container_width=True)
         st.caption(f"Q-table: {Q.shape} | Q_max = {Q.max():.3f} | Hội tụ rõ từ episode ~4000")
@@ -1619,7 +1589,7 @@ def page_bai12():
     kpi(c1,"MAPE Cobb-Douglas",f"{mape_:.2f}%")
     kpi(c2,"TFP Ā (2020-25)",f"{A_.mean():.4f}")
     kpi(c3,"GDP 2030 (S5 cân bằng)",f"{Y2030:,.0f} ng.tỷ")
-    kpi(c4,"6 module tích hợp","M1→M6 ✅",color="#c084fc")
+    kpi(c4,"6 module tích hợp","M1→M6 ✅",color="#f472b6")
     st.markdown("<br>",unsafe_allow_html=True)
 
     t1,t2,t3,t4=st.tabs(["📊 Tổng quan M1-M2","💰 Phân bổ M3","🎬 5 Kịch bản M6","⚠️ Rủi ro M4-M5"])
@@ -1645,8 +1615,8 @@ def page_bai12():
         C_en=_topsis(X_t,_entropy_w(X_t),IS_BENEFIT)
         m2=pd.DataFrame({"Vùng":REGIONS_VI,"C* Expert":C_e.round(4),"C* Entropy":C_en.round(4)})
         fig=go.Figure()
-        fig.add_bar(y=m2["Vùng"],x=m2["C* Expert"],name="Expert",orientation="h",marker_color="#c084fc",opacity=0.85)
-        fig.add_bar(y=m2["Vùng"],x=m2["C* Entropy"],name="Entropy",orientation="h",marker_color="#f472b6",opacity=0.75)
+        fig.add_bar(y=m2["Vùng"],x=m2["C* Expert"],name="Expert",orientation="h",marker_color="#60a5fa",opacity=0.85)
+        fig.add_bar(y=m2["Vùng"],x=m2["C* Entropy"],name="Entropy",orientation="h",marker_color="#fb923c",opacity=0.75)
         fig.update_layout(barmode="group")
         st.plotly_chart(plotly_cfg(fig,title="M2: TOPSIS Expert vs Entropy — Sẵn sàng AI",h=320), use_container_width=True)
 
@@ -1713,13 +1683,13 @@ def page_bai12():
         _,_,Z_sp_,Z_ev_,Z_ws_,det_,_,_,_ = _solve_sp()
         c1,c2,c3=st.columns(3)
         kpi(c1,"Z* SP",f"{Z_sp_:,.0f}")
-        kpi(c2,"VSS",f"{Z_sp_-Z_ev_:,.0f}",color="#c084fc")
-        kpi(c3,"EVPI",f"{Z_ws_-Z_sp_:,.0f}",color="#6366f1")
+        kpi(c2,"VSS",f"{Z_sp_-Z_ev_:,.0f}",color="#f472b6")
+        kpi(c3,"EVPI",f"{Z_ws_-Z_sp_:,.0f}",color="#a855f7")
         scn_=pd.DataFrame({"Kịch bản":["Lạc quan","Cơ sở","Bi quan","Khủng hoảng"],
                            "p":[0.30,0.45,0.20,0.05],
                            "Z*[s]":[round(det_[s]["Z"],0) for s in S10]})
         fig=px.bar(scn_,x="Kịch bản",y="Z*[s]",template=PLOT_TMPL,color="Kịch bản",
-                  color_discrete_sequence=['#a78bfa','#38bdf8','#fb923c','#f87171'])
+                  color_discrete_sequence=['#4ade80','#60a5fa','#fb923c','#f87171'])
         fig.update_layout(showlegend=False)
         st.plotly_chart(plotly_cfg(fig,title=f"M5: Z* theo kịch bản (SP={Z_sp_:,.0f})",h=300), use_container_width=True)
         note("<b>Khuyến nghị tích hợp AIDEOM-VN:</b> Kịch bản <b>S5 Cân bằng</b> tối ưu tổng thể: GDP 2030 cao, NetJob dương, VSS>0 (dùng SP). "
